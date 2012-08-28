@@ -1,0 +1,29 @@
+Metadata-Version: 1.0
+Name: Products.StaticSite
+Version: 1.0
+Summary: Silva helper to export web pages to a static site.
+Home-page: http://www.aktion-hip.ch/
+Author: Benno Luthiger
+Author-email: UNKNOWN
+License: BSD
+Description: Introduction
+        ============
+        
+        
+        
+        This product may contain traces of nuts.
+        
+        Changelog
+        =========
+        
+        1.0dev (unreleased)
+        -------------------
+        
+        - Initial release
+        
+Keywords: silva cms zope
+Platform: UNKNOWN
+Classifier: Classifier: Framework :: Zope2
+Classifier: Classifier: License :: OSI Approved :: BSD License
+Classifier: Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Programming Language :: Python

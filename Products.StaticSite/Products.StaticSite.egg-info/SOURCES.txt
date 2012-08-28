@@ -1,0 +1,14 @@
+README.txt
+setup.py
+Products/__init__.py
+Products.StaticSite.egg-info/PKG-INFO
+Products.StaticSite.egg-info/SOURCES.txt
+Products.StaticSite.egg-info/dependency_links.txt
+Products.StaticSite.egg-info/entry_points.txt
+Products.StaticSite.egg-info/namespace_packages.txt
+Products.StaticSite.egg-info/not-zip-safe
+Products.StaticSite.egg-info/requires.txt
+Products.StaticSite.egg-info/top_level.txt
+Products/StaticSite/StaticSite.py
+Products/StaticSite/__init__.py
+Products/StaticSite/configuration.py

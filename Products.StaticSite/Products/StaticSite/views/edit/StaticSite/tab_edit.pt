@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html tal:omit-tag=""
+  lang="en"
+  xml:lang="en"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  i18n:domain="static_site"
+>
+<metal:use-macro use-macro="here/macro_static_edit/macros/editor">
+
+<metal:fill-slot fill-slot="additional_tools">
+
+<form method="POST"
+  name="form"
+  action="."
+  enctype="multipart/form-data">
+  <table class="listing">
+    <thead>
+      <tal:block replace="nothing">
+        ______________ top controls row ______________
+      </tal:block>
+      <tr class="top-controls">
+        <td colspan="2">
+          <h3 i18n:translate="">
+            Create static html pages 
+          </h3>
+        </td>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr class="controls">
+        <td class="align-right"
+          colspan="2">
+          <input class="button"
+            type="submit"
+            name="execute_submit:method"
+            value="Execute"
+            title="access key: alt-e"
+            accesskey="e"
+            i18n:attributes="title;value"
+          />
+        </td>
+      </tr>
+    </tfoot>    
+  </table>  
+</form>
+</metal:fill-slot>
+
+</metal:use-macro>
+</html>
