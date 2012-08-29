@@ -1,0 +1,14 @@
+<div id="footerline">     
+  <span class="footertitle">letzte &auml;nderung:&#160;</span>
+    <!-- 
+  <tal:block replace="layout/metadata/silva-extra/modificationtime" />
+     -->
+  <span tal:replace="structure provider/modificationdate">date</span>
+  
+  <span id="footerlogo">
+    <img alt="powered by" tal:attributes="src provider/static/footer_zs_powered.gif" border="0" /><a href="http://www.zope.org/" target="_blank">
+    <img alt="zope" tal:attributes="src provider/static/footer_zs_zope.gif" border="0" /></a>
+    <img alt="and" tal:attributes="src provider/static/footer_zs_and.gif" border="0" />
+    <a href="http://www.infrae.org/" target="_blank"><img alt="silva" tal:attributes="src provider/static/footer_zs_silva.gif" border="0" /></a>
+  </span>
+</div>

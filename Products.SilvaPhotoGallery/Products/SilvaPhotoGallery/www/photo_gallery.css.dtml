@@ -1,0 +1,47 @@
+/* start site css tags */
+
+#lightbox_thumbnail {
+/* background:#888888; */
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	width: 120px;
+	text-align: center;
+}
+
+#lightbox_caption {
+	font-size: 0.8em;
+	padding-top: 0.2em;
+}
+
+#lightbox_caption a {
+	text-decoration: none;
+}
+
+#txthelp {
+	border: 1px solid #000000;
+	padding: 3px;
+	margin-bottom: 10px;
+}
+
+#spg_footer {
+	clear: both;
+}
+
+.portrait {
+	height:150px;
+}
+
+.landscape {
+	height:120px;
+}
+
+.expandable {
+  display : none;
+}
+
+.nounderline {
+  text-decoration: none ! important;
+}
+
+/* end site css tags */

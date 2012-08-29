@@ -1,0 +1,11 @@
+<div tal:omit-tag=""
+     tal:define="items provider/get_menu_items">
+     <tal:block condition="not:items" replace="string:No menu found" />
+     <ul tal:condition="items">
+       <li tal:repeat="item items">
+         <a tal:attributes="href item/url;
+                            class item/class_active;" 
+            tal:content="item/label">menu</a>
+       </li>
+     </ul>
+</div>

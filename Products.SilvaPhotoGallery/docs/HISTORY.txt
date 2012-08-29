@@ -1,0 +1,44 @@
+Changelog
+=========
+
+Release 1.2 (2011/09/24):
+=========================
+
+2011/09/24:
+    - Release for Silva 2.3.
+
+
+Release 1.1  (2008/07/25):
+===========================
+
+2008/07/25:
+    - PhotoGallery.py:
+        - Refactoring: moved code source logic from ZODB to file system.
+    - Renderer.py:
+        - Initial checkin. Contains logic from www/photo_gallery_view.pt.
+
+
+Release 1.0.2  (2008/03/03):
+===========================
+
+2008/03/03:
+    - PhotoGallery.py:
+        - Fixed bug in PhotoGallery._set_views() that prevented code source from being copied.
+
+Release 1.0.1  (2008/01/19):
+===========================
+
+2008/11/18:
+    - PhotoGallery.py:
+        - Changed script id from 'view' to 'cs_view' to make it possible to copy and paste instances of this object in the ZODB.
+        
+Release 1.0  (2007/01/19):
+=========================
+
+2007/01/19:
+    - www/photo_gallery_view.pt:
+        -  fixed problems with slideshow
+
+2006/10/26:
+    - PhotoGallery.py:
+        - Adjusted to changes in CodeSource.

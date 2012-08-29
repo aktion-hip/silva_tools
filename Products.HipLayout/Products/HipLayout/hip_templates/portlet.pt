@@ -1,0 +1,11 @@
+<div tal:omit-tag=""
+     tal:repeat="portlet provider/portlets">
+  <h3><span><a tal:attributes="href portlet/url" tal:content="portlet/title">title</a></span></h3>
+  <div id="portlet">
+    <div tal:replace="structure portlet/content">content</div>
+    <div tal:condition="portlet/more_url">
+      <p class="more"><a tal:attributes="href portlet/more_url">[Mehr...]</a></p>
+    </div> 
+  </div>
+  <hr class="noscreen">
+</div>

@@ -1,0 +1,48 @@
+<div tal:omit-tag="">
+
+    <div id="header">
+      <div id="sitelogo">
+        <a tal:attributes="href provider/site_url">
+          <img tal:attributes="src provider/static/RelationsWeb.gif;
+                               alt provider/site_title" />
+        </a>
+      </div>
+      <span id="mainmenu"><tal:block replace="structure provider:mainmenu"/></span>
+      <!-- <span id="search"><tal:block replace="structure context/@@search"/></span> -->
+      <span id="sf_logo" tal:condition="provider/showSFLogo">
+        <a href="http://sourceforge.net/projects/relations-rcp">
+          <img src="http://sflogo.sourceforge.net/sflogo.php?group_id=123234&amp;type=12" width="120" height="30" border="0" alt="Get Relations at SourceForge.net." />
+        </a>        
+      </span>
+    </div>
+
+    <div id="breadcrumbs">      
+      <tal:block tal:replace="structure provider:breadcrumbs" />
+    </div>
+
+    <div id="navigationtree">
+      <ul>
+      <li>
+        <a tal:attributes="href provider/site_url" 
+           class="subnav-off level0"><span tal:replace='provider/site_title'>navigation title</span></a>
+      <tal:block tal:replace="structure provider:navigation" />
+      </li>
+      </ul>
+    </div>
+        
+    <div id="content" tal:content="structure view/content">
+      content
+    </div>
+    
+    <div id="footer" class="footer">
+      <span class="footertitle">last edited at</span>
+      <tal:block tal:define="modificationtime layout/metadata/silva-extra/modificationtime"
+                 replace="python:modificationtime.strftime('%Y/%m/%d')" /> | 
+      <a href ="http://relations-rcp.sourceforge.net/credits.html">&copy; RelationWare</a>
+      
+      <span id="RelationsAtSF">
+        <a href="http://sourceforge.net/projects/relations-rcp">Relations on SourceForge</a>
+      </span>
+    </div>  
+
+</div>

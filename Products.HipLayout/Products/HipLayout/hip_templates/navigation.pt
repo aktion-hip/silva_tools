@@ -1,0 +1,6 @@
+<div tal:omit-tag=""
+     tal:repeat="item provider/items">
+  <li tal:attributes="class item/state">
+    <a href="%(url)s" tal:attributes="href item/url" tal:content="item/label">label</a>
+  </li>
+</div>

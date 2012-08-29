@@ -1,0 +1,4 @@
+Products.Silva
+Products.RwLayout
+setuptools
+zope.component

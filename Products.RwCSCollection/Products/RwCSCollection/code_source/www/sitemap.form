@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+
+<form>
+  <title>Parameters form</title>
+  <row_length>4</row_length>
+  <name>form</name>
+  <action></action>
+  <method>POST</method>
+  <enctype></enctype>
+  <encoding>UTF-8</encoding>
+  <stored_encoding>ISO-8859-1</stored_encoding>
+  <unicode_mode>false</unicode_mode>
+  <i18n_domain>karthago_layout</i18n_domain>
+  <groups>
+    <group>
+      <title>Default</title>
+      <fields>
+
+      <field><id>list_type</id> <type>ListField</type>
+        <values>
+          <alternate_name></alternate_name>
+          <css_class></css_class>
+          <default>1</default>
+          <description>Indented list type displays each subfolder indented.</description>
+          <enabled type="int">1</enabled>
+          <external_validator></external_validator>
+          <extra></extra>
+          <extra_item></extra_item>
+          <first_item type="int">0</first_item>
+          <hidden type="int">0</hidden>
+          <items type="list">[('indented', '1'), ('flat', '0')]</items>
+          <required type="int">1</required>
+          <size type="int">2</size>
+          <title>List type</title>
+          <unicode type="int">0</unicode>
+          <whitespace_preserve type="int">0</whitespace_preserve>
+        </values>
+        <tales>
+        </tales>
+        <messages>
+          <message name="external_validator_failed">The input failed the external validator.</message>
+          <message name="required_not_found">Input is required but no input given.</message>
+          <message name="unknown_selection">You selected an item that was not in the list.</message>
+        </messages>
+      </field>
+      <field><id>to_ignore</id> <type>StringField</type>
+        <values>
+          <alternate_name></alternate_name>
+          <css_class></css_class>
+          <default>search, sitemap, portlets, contact</default>
+          <description>Comma separated list of container to filter out: 'container1' [, 'container2', ...]</description>
+          <display_maxwidth></display_maxwidth>
+          <display_width type="int">40</display_width>
+          <enabled type="int">1</enabled>
+          <external_validator></external_validator>
+          <extra></extra>
+          <hidden type="int">0</hidden>
+          <max_length></max_length>
+          <required type="int">0</required>
+          <title>Containers to ignore</title>
+          <truncate type="int">0</truncate>
+          <unicode type="int">0</unicode>
+          <whitespace_preserve type="int">0</whitespace_preserve>
+        </values>
+        <tales>
+        </tales>
+        <messages>
+          <message name="external_validator_failed">The input failed the external validator.</message>
+          <message name="required_not_found">Input is required but no input given.</message>
+          <message name="too_long">Too much input was given.</message>
+        </messages>
+      </field>
+      </fields>
+    </group>
+  </groups>
+</form>

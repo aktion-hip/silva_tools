@@ -1,0 +1,8 @@
+<div tal:omit-tag=""
+     tal:repeat="menu_item provider/menu_items">
+  <li tal:attributes="class menu_item/state">
+    <a tal:attributes="href menu_item/url">
+      <span tal:replace="menu_item/label">label</span><span class="tab-l"></span><span class="tab-r"></span>
+    </a>
+  </li>
+</div>

@@ -1,0 +1,112 @@
+<div id="main" class="box">
+    <!-- Header -->
+    <div id="header">
+
+        <!-- Logotyp -->
+        <h1 id="logo">
+          <a tal:attributes="title string:${provider/site_title} [Home];
+                             href provider/site_url;">
+            <strong tal:content="provider/site_title">site title</strong>                             
+          </a>
+        </h1>
+        <hr class="noscreen" />          
+
+        <!-- Quick links -->
+        <div class="noscreen noprint">
+            <p><em>Quick links: <a href="#content">content</a>, <a href="#tabs">navigation</a>, <a href="#search">search</a>.</em></p>
+            <hr />
+        </div>
+
+        <!-- Search -->
+        <div id="search" class="noprint">
+            <form method="get" tal:attributes="action string:${provider/site_url}/search/">
+                <input type="hidden" name="search_submit" value="Suchen" />
+                <fieldset><legend>Search</legend>
+                    <label><span class="noscreen">Find:</span>
+                      <span id="search-input-out"><input type="text" name="fulltext" id="search-input" size="30" /></span>
+                    </label>
+                    <input type="image" tal:attributes="src provider/static/search_submit.gif" id="search-submit" value="OK" />
+                </fieldset>
+            </form>
+        </div> <!-- /search -->
+    </div> <!-- /header -->
+
+    <!-- Main menu (tabs) -->
+    <div id="tabs" class="noprint">
+       <h3 class="noscreen">Navigation</h3>
+       <ul class="box"><tal:block tal:replace="structure provider:mainmenu" /></ul>
+       <hr class="noscreen" />
+    </div> <!-- /tabs -->
+    
+    <!-- Page (2 columns) -->
+    <div id="page" class="box">
+    <div id="page-in" class="box">
+
+        <div id="strip" class="box noprint">
+
+            <!-- RSS feeds -->
+            <p id="rss"><strong>RSS:</strong>
+              <a tal:attributes="href string:${provider/site_url}/blog/?feed=rss2">Artikel</a> / <a tal:attributes="href string:${provider/site_url}/blog/?feed=comments-rss2">Kommentare</a>
+            </p>
+            <hr class="noscreen" />
+
+            <!-- Breadcrumbs -->
+            <p id="breadcrumbs">Pfad: 
+             <tal:block tal:replace="structure provider:breadcrumbs" />
+            </p>
+            <hr class="noscreen" />
+            
+        </div> <!-- /strip -->
+
+        <!-- Content -->
+        <div id="content">
+		    <div class="article">
+		      <tal:block content="structure view/content"/>
+		    </div>
+        </div> 
+        <!-- /content -->
+
+        <!-- Right column -->
+        <div id="col" class="noprint">
+            <div id="col-in">
+
+                <!-- Navigation -->
+                <h3><span tal:content="provider/site_title">Inhalt</span></h3>
+
+                <ul id="category">
+                  <tal:block tal:replace="structure provider:navigation" />
+                </ul> <!-- /navigation -->
+
+                <hr class="noscreen" />
+
+                <!-- Portlets -->
+                <tal:block tal:replace="structure provider:portlet" />
+
+                <!-- Links 
+                <h3><span>Links</span></h3>
+
+                <ul id="links">
+                    <li><a href="#">Something</a></li>
+                    <li><a href="#">Something</a></li>
+                    <li><a href="#">Something</a></li>
+                    <li><a href="#">Something</a></li>
+                    <li><a href="#">Something</a></li>
+                </ul>
+
+                <hr class="noscreen" />
+                -->
+            
+            </div> <!-- /col-in -->
+        </div> <!-- /col -->
+
+    </div> <!-- /page-in -->
+    </div> <!-- /page -->
+    
+    <!-- Footer -->
+    <div id="footer">
+        <div id="top" class="noprint"><p><span class="noscreen">Back on top</span> <a href="#header" title="Back on top ^">^<span></span></a></p></div>
+        <hr class="noscreen" />
+        <tal:block tal:replace="structure provider:footer" />
+    </div> <!-- /footer -->
+
+</div>

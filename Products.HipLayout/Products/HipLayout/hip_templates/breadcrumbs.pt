@@ -1,0 +1,26 @@
+<tal:block condition="nothing">
+  <!--
+    Copyright (c) 2011 RelationWare, Benno Luthiger. All rights reserved.
+  See also LICENSE.txt
+  -->
+</tal:block>
+
+<tal:block tal:define="trail provider/breadcrumbs;
+                       site_title layout/get_site_title;">
+  <div tal:repeat="step trail" tal:omit-tag="">
+    <div tal:omit-tag=""
+         tal:define="step_name step/name;
+                     step_name python:step_name == site_title and 'Home' or step_name">
+      <a tal:attributes="href step/url" 
+         tal:condition="not:repeat/step/end"
+         tal:content="step_name" />
+      <strong tal:condition="repeat/step/end"
+              tal:content="step_name">-
+      </strong>
+      <div tal:omit-tag=""
+           tal:condition="not:repeat/step/end"
+           tal:content="string:&gt;">-
+      </div>
+    </div>
+  </div>
+</tal:block>

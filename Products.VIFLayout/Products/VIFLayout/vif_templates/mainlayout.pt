@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title tal:content="layout/get_page_title">Title</title>
+    <meta name="generator" content="Silva" />
+    <meta name="description"
+          tal:define="description layout/metadata/silva-extra/content_description | nothing"
+          tal:condition="description"
+          tal:attributes="content description" />
+    <meta name="keywords"
+          tal:define="keywords layout/metadata/silva-extra/keywords | nothing"
+          tal:condition="keywords"
+          tal:attributes="content keywords" />
+
+    <meta name="robots" content="all,follow" />
+  
+    <meta name="copyright" content="Code: Benno Luthiger, RelationWare" />      
+
+    <link rel="index" tal:attributes="href request/resourcebase/absolute_url" title="Home" />
+    <link rel="shortcut icon" type="image/x-icon" tal:attributes="href layout/static/favicon.ico" />      
+
+    <tal:resource tal:replace="structure provider:resources" />
+    <tal:extraelements tal:replace="structure provider:htmlheadinsert" />
+    <!-- Injector for on-the-fly css/js inclusion -->
+    <link tal:replace="structure context/head_inject | nothing" />
+  </head>
+
+  <body id="www-url-hip">
+    <tal:layout tal:replace="structure provider:layout" />
+  </body>
+</html>

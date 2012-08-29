@@ -1,0 +1,17 @@
+        Changes
+        =======
+        
+        1.1.1 (2011/09/24)
+        ------------------
+        
+        - code_source/assetlist.py, SitemapCode.py: removed unnecessary imports.
+        
+        1.1 (2011/05/02)
+        ----------------
+        
+        - Initial release as egg for Silva 2.3.
+        
+        1.0 (2011/07/01)
+        ----------------
+        
+        - Initial release as product for Silva 2.2.

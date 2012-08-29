@@ -1,0 +1,18 @@
+        Changes
+        =======
+        
+        1.1.1 (2011/09/18)
+        ------------------
+        
+        - Fixed problem with search form: layout.py and static/css/karthago.css.
+        
+        
+        1.1 (2011/05/02)
+        ----------------
+        
+        - Initial release as egg for Silva 2.3.
+        
+        1.0 (2011/07/01)
+        ----------------
+        
+        - Initial release as product for Silva 2.2.

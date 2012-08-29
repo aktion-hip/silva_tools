@@ -1,0 +1,5 @@
+<div tal:omit-tag=""
+     tal:define="modificationtime layout/metadata/silva-extra/modificationtime">
+  <p id="copyright">&copy; Aktion HIP | Datum: <tal:block replace="python:modificationtime.strftime('%d.%m.%Y')"/></p>
+  <p id="createdby">design by <a href="http://www.nuvio.cz">Nuvio | Webdesign</a>
+</div>

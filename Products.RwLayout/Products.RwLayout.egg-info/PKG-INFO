@@ -1,0 +1,35 @@
+Metadata-Version: 1.0
+Name: Products.RwLayout
+Version: 1.1
+Summary: Base layout RelationWare
+Home-page: http://www.aktion-hip.ch/
+Author: Benno Luthiger
+Author-email: UNKNOWN
+License: BSD
+Description: =====
+                RwLayout
+                ========
+                
+                RwLayout is a grok based extension and layout layer 
+                for the Silva WCMS.
+        
+        
+                Changes
+                =======
+                
+                1.1 (2011/05/02)
+                ----------------
+                
+                - Initial release as egg for Silva 2.3.
+                
+                1.0 (2011/07/01)
+                ----------------
+                
+                - Initial release as product for Silva 2.2.
+        
+Keywords: silva cms zope
+Platform: UNKNOWN
+Classifier: Classifier: Framework :: Zope2
+Classifier: Classifier: License :: OSI Approved :: BSD License
+Classifier: Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Classifier: Programming Language :: Python
