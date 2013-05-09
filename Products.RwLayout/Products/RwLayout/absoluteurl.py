@@ -10,7 +10,7 @@ from zope.publisher.interfaces import IRequest
 from zope.component import getMultiAdapter
 from OFS.interfaces import ITraversable
 
-from silva.core.interfaces import ISilvaObject, IFolder, IRoot, ISiteManager, IVirtualHosting
+from silva.core.interfaces import ISilvaObject, IFolder, IRoot, ISiteManager
 
 
 class IRwUrl(Interface):
@@ -56,7 +56,6 @@ class RwUrl(grok.MultiAdapter):
         return (container is None or
                 self._isLocalSite(container) or
                 IRoot.providedBy(container) or
-                self._isVirtualHostRoot(container) or
                 not ITraversable.providedBy(container))
         
     def _isLocalSite(self, container):
@@ -65,5 +64,5 @@ class RwUrl(grok.MultiAdapter):
         except:
             return False        
 
-    def _isVirtualHostRoot(self, context):
-        return sameProxiedObjects(IVirtualHosting(context).getVirtualRoot(), context)
+    #def _isVirtualHostRoot(self, context):
+    #    return sameProxiedObjects(IVirtualHosting(context).getVirtualRoot(), context)

@@ -12,12 +12,16 @@ from zope.interface import Interface, implements
 # Silva
 from silva.core import interfaces
 from silva.core.views.interfaces import IPreviewLayer
-from Products.Silva.adapters.tocrendering import compute_default_show_types, TOCRenderingAdapter
+#from Products.Silva.adapters.tocrendering import compute_default_show_types, TOCRenderingAdapter
 from cgitb import html
 
 _marker = []
 
-class SitemapRenderingAdapter(TOCRenderingAdapter):
+def compute_default_show_types():
+    return []
+
+#class SitemapRenderingAdapter(TOCRenderingAdapter):
+class SitemapRenderingAdapter(object):
     """Represents the structure of the sitemap.
     """
     def __init__(self, site_root, request):

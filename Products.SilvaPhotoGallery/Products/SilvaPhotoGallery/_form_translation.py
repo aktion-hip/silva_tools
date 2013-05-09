@@ -10,7 +10,7 @@
 
 i18n_domain = 'photo_gallery'
 
-from Products.Silva.i18n import translate as _
+from silva.translations import translate as _
 
 values = {
   'form':

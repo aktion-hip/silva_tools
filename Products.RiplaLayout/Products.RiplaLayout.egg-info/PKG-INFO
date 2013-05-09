@@ -1,7 +1,7 @@
 Metadata-Version: 1.1
-Name: Products.StaticSite
+Name: Products.RiplaLayout
 Version: 1.0
-Summary: Silva helper to export web pages to a static site.
+Summary: Layout for the website of the Ripla project
 Home-page: http://www.aktion-hip.ch/
 Author: Benno Luthiger
 Author-email: UNKNOWN
@@ -26,4 +26,4 @@ Platform: UNKNOWN
 Classifier: Classifier: Framework :: Zope2
 Classifier: Classifier: License :: OSI Approved :: BSD License
 Classifier: Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
-Classifier: Programming Language :: Python
+Classifier: Classifier: Programming Language :: Python

@@ -12,7 +12,7 @@ from App.Common import package_home
 from silva.core import conf as silvaconf
 from silva.core.conf.installer import DefaultInstaller
 from zope.interface import Interface
-from Products.SilvaExternalSources.install import INSTALLERS
+#from Products.SilvaExternalSources.install import INSTALLERS
 
 from Products.RwCSCollection.code_source.configure import code_sources, code_sources_derived
 
@@ -73,7 +73,7 @@ def install_code_sources(folder, cs_path, code_sources={}, derived_code_sources=
         codesource_path = pjoin(cs_path, cs_name)
         for filename in os.listdir(codesource_path):
             name, extension = os.path.splitext(filename)
-            installer = INSTALLERS.get(extension, None)
+            installer = None #INSTALLERS.get(extension, None)
             if installer is None:
                 logger.info(u"don't know how to install file %s for code source %s" % (filename, cs_name))
                 continue

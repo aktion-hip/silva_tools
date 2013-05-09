@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title tal:content="layout/get_site_title">Title</title>
+    <meta name="generator" content="Silva" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7; IE=EmulateIE9" />
+    <meta name="description"
+          tal:define="description layout/metadata/silva-extra/content_description | nothing"
+          tal:condition="description"
+          tal:attributes="content description" />
+    <meta name="keywords"
+          tal:define="keywords layout/metadata/silva-extra/keywords | nothing"
+          tal:condition="keywords"
+          tal:attributes="content keywords" />
+
+    <meta name="robots" content="all,follow" />
+  
+    <meta name="copyright" content="Code: Benno Luthiger, RelationWare" />      
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="index" tal:attributes="href request/resourcebase/absolute_url" title="Home" />
+    <tal:resource tal:replace="structure provider:resources" />
+
+    <!-- Injector for content-specific css/js inclusion -->
+    <link tal:replace="structure context/head_inject | nothing" />
+    <!-- 
+    <link rel="SHORTCUT ICON" tal:attributes="href string:${context/@@absolute_url}/++resource++Products.RipalLayout/favicon.ico"/>
+     -->
+  </head>
+
+  <body>
+    <tal:layout tal:replace="structure provider:layout" />
+  </body>
+</html>

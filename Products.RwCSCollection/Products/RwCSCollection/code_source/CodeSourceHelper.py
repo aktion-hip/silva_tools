@@ -5,7 +5,7 @@
 #python
 import os
 
-from zope.app.container.interfaces import IObjectAddedEvent
+#from zope.app.container.interfaces import IObjectAddedEvent
 
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 from Products.Silva.helpers import add_and_edit
@@ -100,7 +100,9 @@ def manage_addCSBase(class_ref, context, id, title, postCreationHook=None, REQUE
 
 ## event subscription
 def added_CSInstance(object, event):
-    if object != event.object or (not IObjectAddedEvent.providedBy(event)) \
+    #if object != event.object or (not IObjectAddedEvent.providedBy(event)) \
+    #   or (not IRwSource.providedBy(object)):
+    if object != event.object \
        or (not IRwSource.providedBy(object)):
         return
     object.refresh()

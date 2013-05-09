@@ -26,7 +26,7 @@ from Products.Silva.SilvaPermissions import ViewManagementScreens, ChangeSilvaAc
 #from Products.RwLayout.browser.tree import IsInfrastructure
 
 from Products.RwCSCollection.code_source.CodeSourceHelper import AbstractCSEditForm, AbstractCSAddForm, manage_addCSBase
-from Products.RwCSCollection.code_source.SitemapCode import SitemapRenderingAdapter
+#from Products.RwCSCollection.code_source.SitemapCode import SitemapRenderingAdapter
 from Products.RwLayout.rw_layout import getLocalSite
 
 pjoin = os.path.join
@@ -102,10 +102,11 @@ class SiteMap(CodeSource):
         #comma separated list of Silva containers to filter from sitemap display
         to_ignore = parameters.get('to_ignore', '')
         
-        sitemap = SitemapRenderingAdapter(getLocalSite(content.get_container(), request), request)
-        sitemap.set_filters((InfrastructureFilter([item.strip() for item in to_ignore.split(',')]),))
-
-        return sitemap.render(list_type)
+        return '<p>No sitemap at the moment</p>'
+        #sitemap = SitemapRenderingAdapter(getLocalSite(content.get_container(), request), request)
+        #sitemap.set_filters((InfrastructureFilter([item.strip() for item in to_ignore.split(',')]),))
+        #
+        #return sitemap.render(list_type)        
     
 InitializeClass(SiteMap)
 
