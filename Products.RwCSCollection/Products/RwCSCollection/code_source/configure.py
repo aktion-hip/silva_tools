@@ -1,28 +1,28 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2011 RelationWare, Benno Luthiger. All rights reserved.
+# Copyright (c) 2011-2013 RelationWare, Benno Luthiger. All rights reserved.
 # See also LICENSE.txt
 
 code_sources = {
     'mail_scrambler': {
         'title':'Mail Scrambler',
         'description':'Scrambles mail',
-        'previewable':True,        
+        'previewable':False,        
         'cacheable':True,
-        'elaborate':False,
+        'usable':True,
     },
     'clear_float': {
         'title':'Clear floating images',
         'description':'New start for floating images on right side',
         'previewable':False,
         'cacheable':True,
-        'elaborate':False,
+        'usable':True,
     },
     'html_anchor': {
         'title':'Anchor',
         'description':'Anchor for jumps inside a page',
         'previewable':False,
         'cacheable':True,
-        'elaborate':False,
+        'usable':True,
     },
 }
 code_sources_derived = {

@@ -1,14 +1,16 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2011 RelationWare, Benno Luthiger. All rights reserved.
+# Copyright (c) 2011-2013 RelationWare, Benno Luthiger. All rights reserved.
 # See also LICENSE.txt
+
+from five import grok
 
 from zope.cachedescriptors.property import CachedProperty
 from zope.component import getMultiAdapter, getAdapter
+from Products.Five.component.interfaces import IObjectManagerSite
 
 from silva.core import conf as silvaconf
 from silva.core.layout.porto import porto
 from silva.core.views.interfaces import IVirtualSite
-from silva.core.interfaces import ISiteManager
 
 from Products.RwLayout.skin import IRelationWare
 from Products.RwLayout.interfaces import IRwCustomRoot
@@ -29,7 +31,7 @@ class MainLayout(porto.MainLayout):
                 return model
             model = model.aq_inner.aq_parent
         return model
-    
+
 
 class Layout(porto.Layout):    
     @CachedProperty
@@ -92,7 +94,7 @@ def getLocalSite(container, request):
 
 def _isLocalSite(container):
     try:
-        return ISiteManager(container).isSite()
+        return IObjectManagerSite.providedBy(container)
     except:
         return False
 

@@ -1,0 +1,30 @@
+<tal:def tal:define="
+  view here;
+  list_type options/list_type | python:0;
+  to_ignore options/to_ignore;
+  model options/model;
+">
+<style type="text/css">
+div.sitemap > ul {
+  margin-left: 0;
+}
+div.sitemap > ul > li {
+  list-style-type: none;
+}
+div.sitemap > ul > li.topContainer {
+  margin-top: 5px;
+}
+div.sitemap > ul > li.topContainer > a {
+  font-weight:bold;
+  font-size: 110%;
+}
+div.sitemap span.highlited {
+    color: red;
+}
+</style>
+  <!-- Sitemap codesource 3.0 -->
+  <div class="sitemap">
+    <tal:sitemap tal:replace="structure provider:sitemap" />
+  </div>
+  <!-- End Sitemap codesource 3.0 -->
+</tal:def>

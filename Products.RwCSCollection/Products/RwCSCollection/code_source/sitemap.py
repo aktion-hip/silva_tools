@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2011 RelationWare, Benno Luthiger. All rights reserved.
+# Copyright (c) 2011-2013 RelationWare, Benno Luthiger. All rights reserved.
 # See also LICENSE.txt
 
 import os
+import logging
 
 #Zope
 from Globals import InitializeClass, package_home
 from AccessControl import ClassSecurityInfo
+from Acquisition import aq_base
 from zope.interface import implements
 
 #Formulator
@@ -18,25 +20,24 @@ from silva.core import conf as silvaconf
 
 from Products.SilvaExternalSources.interfaces import IExternalSource
 from Products.SilvaExternalSources.CodeSource import CodeSource
+from Products.SilvaExternalSources.CodeSourceService import INSTALLERS
 from Products.Silva.SilvaPermissions import ViewManagementScreens, ChangeSilvaAccess, AccessContentsInformation
 
-# SilvaLayout
-#from Products.SilvaLayout.browser.tree import NotPublic, NotVisible
-
-#from Products.RwLayout.browser.tree import IsInfrastructure
-
 from Products.RwCSCollection.code_source.CodeSourceHelper import AbstractCSEditForm, AbstractCSAddForm, manage_addCSBase
-#from Products.RwCSCollection.code_source.SitemapCode import SitemapRenderingAdapter
 from Products.RwLayout.rw_layout import getLocalSite
+
 
 pjoin = os.path.join
 _phome = package_home(globals())
 _folder = 'www'
 _script_id = 'view'
+_view_template = 'sitemap_view.pt'
+
+logger = logging.getLogger('Products.RwCSCollection.sitemap')
 
 class EditCSSiteMapForm(AbstractCSEditForm):
     def _getActionName(self):
-        return "manage_editCodeSource"
+        return "manage_editSiteMap"
     def _getDescription(self):
         return "Edit SiteMap Code Source"
 
@@ -80,33 +81,48 @@ class SiteMap(CodeSource):
         f.close()
 
     def _set_views(self):
-        pass
-            
-    def _add_python_script(self, script, obj_id):
+        self._add_pt(_view_template)
+        
+    def _add_pt(self, template):
         if hasattr(self.aq_explicit, _script_id):
             return
         
-        f = open(pjoin(_phome, _folder, script), 'rb')
-        text = f.read()
-        f.close()
-        self.manage_addProduct['PythonScripts'].manage_addPythonScript(obj_id)
-        pscript = getattr(self, obj_id)
-        pscript.write(text)
+        name, extension = os.path.splitext(template)
+        installer = INSTALLERS.get(extension, None)
+        if installer is None:
+            logger.info(u"don't know how to install file %s for code source %s" % (template, 'sitemap'))
+        else:
+            with open(pjoin(_phome, _folder, template), 'rb') as data:
+                installer(self, data, _script_id, extension)
 
-    security.declareProtected(AccessContentsInformation, 'to_html')
-    def to_html(self, content, request, **parameters):
-        """Render HTML for code source
+    security.declareProtected(ViewManagementScreens, 'test_source')
+    def test_source(self):
+        # return a list of problems or None
+        errors = []
+        # in real life the parent of the form is the document. We try
+        # to do the same here.
+        root = self.get_root()
+        if root.get_default():
+            root = root.get_default()
+        if self.parameters is not None:
+            try:
+                aq_base(self.parameters).__of__(root).test_form()
+            except ValueError as error:
+                errors.extend(error.args)
+        if not self.title:
+            errors.append(u'Missing required source title.')
+        if errors:
+            return errors
+        return None
+    
+    security.declareProtected(ViewManagementScreens, 'manage_editSiteMap')
+    def manage_editSiteMap(self, title, data_encoding, description=None,
+        cacheable=None, previewable=None, usable=None):
+        """ Edit CodeSource object
         """
-        #0=flat, 1=indented
-        list_type = int(parameters.get('list_type', 0))
-        #comma separated list of Silva containers to filter from sitemap display
-        to_ignore = parameters.get('to_ignore', '')
-        
-        return '<p>No sitemap at the moment</p>'
-        #sitemap = SitemapRenderingAdapter(getLocalSite(content.get_container(), request), request)
-        #sitemap.set_filters((InfrastructureFilter([item.strip() for item in to_ignore.split(',')]),))
-        #
-        #return sitemap.render(list_type)        
+        location = None
+        msg = self.manage_editCodeSource(title, '', data_encoding, description, location, cacheable, previewable, usable)
+        return msg.replace(u'<b>Warning</b>: no script id specified!<b>Warning</b>: This code source does not contain an object with identifier ""!', '')
     
 InitializeClass(SiteMap)
 

@@ -7,6 +7,7 @@ import os
 #Zope
 from Globals import InitializeClass, package_home
 from zope.interface import implements
+from Acquisition import aq_base
 from AccessControl import ClassSecurityInfo
 
 #Silva
@@ -83,11 +84,32 @@ class ContactForm(CodeSource):
 
     security.declareProtected(ViewManagementScreens, 'manage_editContactForm')
     def manage_editContactForm(self, title, data_encoding, description=None,
-        cacheable=None, elaborate=None, previewable=None):
+        cacheable=None, previewable=None, usable=None):
         """ Edit CodeSource object
         """
-        msg = self.manage_editCodeSource(title, '', data_encoding, description, cacheable, elaborate, previewable)
+        location = None
+        msg = self.manage_editCodeSource(title, '', data_encoding, description, location, cacheable, previewable, usable)
         return msg.replace(u'<b>Warning</b>: no script id specified!<b>Warning</b>: This code source does not contain an object with identifier ""!', '')
+
+    security.declareProtected(ViewManagementScreens, 'test_source')
+    def test_source(self):
+        # return a list of problems or None
+        errors = []
+        # in real life the parent of the form is the document. We try
+        # to do the same here.
+        root = self.get_root()
+        if root.get_default():
+            root = root.get_default()
+        if self.parameters is not None:
+            try:
+                aq_base(self.parameters).__of__(root).test_form()
+            except ValueError as error:
+                errors.extend(error.args)
+        if not self.title:
+            errors.append(u'Missing required source title.')
+        if errors:
+            return errors
+        return None
 
     security.declareProtected(AccessContentsInformation, 'to_html')
     def to_html(self, content, request, **parameters):

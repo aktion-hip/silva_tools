@@ -1,10 +1,5 @@
 Products.RwLayout/Products/RwLayout/absoluteurl.py:
 IVirtualHosting (-> _isVirtualHostRoot())
 
-Products.RwCSCollection/Products/RwCSCollection/__init__.py:
--> INSTALLERS
-Products.RwCSCollection/Products/RwCSCollection/code_source/SitemapCode.py
-Products.RwCSCollection/Products/RwCSCollection/code_source/sitemap.py
-
 Products.StaticSite/Products/StaticSite/__init__.py:
 -> add_fss_directory_view

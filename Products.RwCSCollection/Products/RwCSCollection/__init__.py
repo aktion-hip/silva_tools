@@ -12,13 +12,13 @@ from App.Common import package_home
 from silva.core import conf as silvaconf
 from silva.core.conf.installer import DefaultInstaller
 from zope.interface import Interface
-#from Products.SilvaExternalSources.install import INSTALLERS
+from Products.SilvaExternalSources.CodeSourceService import INSTALLERS
 
 from Products.RwCSCollection.code_source.configure import code_sources, code_sources_derived
 
 pjoin = os.path.join
 _fs_cs_path = pjoin(package_home(globals()), 'code_source', 'plain')
-_cs_prefix = 'cs_'
+_cs_prefix = 'cs_rw_'
     
 logger = logging.getLogger('Products.RwCSCollection')
 
@@ -68,17 +68,17 @@ def install_code_sources(folder, cs_path, code_sources={}, derived_code_sources=
         source.set_description(cs_info['description'])
         source.set_previewable(cs_info.get('previewable', False))
         source.set_cacheable(cs_info.get('cacheable', False))
-        source.set_elaborate(cs_info.get('elaborate', False))
+        source.set_usable(cs_info.get('usable', False))
         
         codesource_path = pjoin(cs_path, cs_name)
         for filename in os.listdir(codesource_path):
             name, extension = os.path.splitext(filename)
-            installer = None #INSTALLERS.get(extension, None)
+            installer = INSTALLERS.get(extension, None)
             if installer is None:
                 logger.info(u"don't know how to install file %s for code source %s" % (filename, cs_name))
                 continue
             with open(os.path.join(codesource_path, filename), 'rb') as data:
-                installer(source, data, name)
+                installer(source, data, name, extension)
 
     for cs_name, cs_info in derived_code_sources.items():
         if not cs_info.get('install', False):

@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2011 RelationWare, Benno Luthiger. All rights reserved.
+# Copyright (c) 2011-2013 RelationWare, Benno Luthiger. All rights reserved.
 # See also LICENSE.txt
 
 #python
 import os
 
 #from zope.app.container.interfaces import IObjectAddedEvent
-
 from Products.PageTemplates.PageTemplateFile import PageTemplateFile
 from Products.Silva.helpers import add_and_edit
 from Products.SilvaExternalSources.interfaces import IExternalSource
@@ -106,3 +105,4 @@ def added_CSInstance(object, event):
        or (not IRwSource.providedBy(object)):
         return
     object.refresh()
+

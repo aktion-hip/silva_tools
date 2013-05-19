@@ -25,6 +25,7 @@ Products/RwCSCollection/code_source/CodeSourceHelper.py
 Products/RwCSCollection/code_source/CodeSourceHelper.pyc
 Products/RwCSCollection/code_source/ContactCode.py
 Products/RwCSCollection/code_source/ContactCode.pyc
+Products/RwCSCollection/code_source/RWCodeSource.pyc
 Products/RwCSCollection/code_source/SitemapCode.py
 Products/RwCSCollection/code_source/SitemapCode.pyc
 Products/RwCSCollection/code_source/__init__.py
@@ -52,7 +53,7 @@ Products/RwCSCollection/code_source/www/get_asset_templates.py
 Products/RwCSCollection/code_source/www/rw_CSAdd.zpt
 Products/RwCSCollection/code_source/www/rw_CSEdit.zpt
 Products/RwCSCollection/code_source/www/sitemap.form
-Products/RwCSCollection/code_source/www/sitemap_view.py
+Products/RwCSCollection/code_source/www/sitemap_view.pt
 Products/RwCSCollection/tests/__init__.py
 Products/RwCSCollection/tests/__init__.pyc
 Products/RwCSCollection/tests/test.xhtml
