@@ -6,7 +6,7 @@
 </tal:block>
 
 <tal:block tal:define="trail provider/breadcrumbs;
-                       site_title layout/get_site_title;">
+                       site_title layout/get_site_title | string:Error;">
   <div tal:repeat="step trail" tal:omit-tag="">
     <div tal:omit-tag=""
          tal:define="step_name step/name;
