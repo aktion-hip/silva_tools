@@ -1,0 +1,11 @@
+<div tal:omit-tag=""
+     tal:repeat="portlet provider/get_portlets">
+
+<div class="portlet-border">
+    <div class="portlet">
+        <p class="lineheight1"></p>
+        <div tal:replace="structure python:portlet.body">view document</div>
+    </div>
+</div>
+
+</div>

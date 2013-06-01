@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2011 RelationWare. All rights reserved.
+# Copyright (c) 2011-2013 RelationWare. All rights reserved.
 # See also LICENSE.txt
 # $Revision: $
 

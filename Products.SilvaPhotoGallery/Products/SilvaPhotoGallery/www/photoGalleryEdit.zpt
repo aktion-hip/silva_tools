@@ -91,25 +91,36 @@ Version of this file: $Revision: 1.7 $
     <tr>
       <td align="left" valign="top">
         <div class="form-label">
-          Source is cacheable
+          <label for="cacheable">Source is cacheable</label>
         </div>
       </td>
       <td align="left" valign="top">
-        <input type="checkbox" name="cacheable" 
+        <input type="checkbox" name="cacheable" id="cacheable"
           tal:attributes="checked python: here.is_cacheable() and 'checked' or nothing" />
       </td>
     </tr>
     <tr>
       <td align="left" valign="top">
         <div class="form-label">
-          Source is previewable in kupu
+          Source is previewable
         </div>
       </td>
       <td align="left" valign="top">
         <input type="checkbox" name="previewable"
           tal:attributes="checked python: here.is_previewable() and 'checked' or nothing" />
       </td>
-    </tr>    
+    </tr>
+    <tr>
+      <td align="left" valign="top">
+        <div class="form-label">
+          <label for="usable">Source is usable</label><br />
+        </div>
+      </td>
+      <td align="left" valign="top">
+        <input type="checkbox" name="usable" id="usable"
+          tal:attributes="checked python: here.is_usable() and 'checked' or nothing" />
+      </td>
+    </tr>
     <tr>
       <td align="left" valign="top">
       </td>

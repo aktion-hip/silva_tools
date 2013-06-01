@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 # Copyright (c) 2011 RelationWare, Benno Luthiger. All rights reserved.
 # See also LICENSE.txt
+from five import grok
 from zope.cachedescriptors.property import CachedProperty
 
+from silva.core import conf as silvaconf
 from silva.core.views import views as silvaviews
 from silva.core.layout.porto import porto
-from silva.core import conf as silvaconf
 
 # Silva
 from silva.core.interfaces import IGhost
@@ -23,13 +24,26 @@ _menu_objects = [Publication.meta_type, Folder.meta_type, Link.meta_type]
 
 silvaconf.layer(IHip)
 
-class MainLayout(porto.MainLayout):
-    @CachedProperty
-    def get_site_title(self):
-        return rw_layout.getLocalSite(self.context.get_publication(), self.request).get_title()
+class MainLayout(rw_layout.MainLayout):
+    pass
 
 class Layout(rw_layout.Layout):
     pass
+
+class HipInserts(silvaviews.Viewlet):
+    grok.viewletmanager(porto.HTMLHeadInsert)
+
+    def render(self):
+        return u'''    <meta name="copyright" content="Code: Benno Luthiger, RelationWare" />
+    <meta name="copyright" content="Design: Vit Dlouhy [Nuvio - www.nuvio.cz]" />
+    <link rel="shortcut icon" type="image/x-icon" href="%s" />''' %self.static['favicon.png']()
+
+class Favicon(silvaviews.Viewlet):
+    grok.viewletmanager(porto.HTMLHeadInsert)
+    
+    def render(self):
+        return ''
+
 
 class Mainmenu(silvaviews.ContentProvider):
     @CachedProperty    

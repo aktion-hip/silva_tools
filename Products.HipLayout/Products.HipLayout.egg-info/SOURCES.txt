@@ -23,7 +23,6 @@ Products/HipLayout/skin.pyc
 Products/HipLayout/hip_templates/breadcrumbs.pt
 Products/HipLayout/hip_templates/footer.pt
 Products/HipLayout/hip_templates/layout.pt
-Products/HipLayout/hip_templates/mainlayout.pt
 Products/HipLayout/hip_templates/mainmenu.pt
 Products/HipLayout/hip_templates/navigation.pt
 Products/HipLayout/hip_templates/portlet.pt

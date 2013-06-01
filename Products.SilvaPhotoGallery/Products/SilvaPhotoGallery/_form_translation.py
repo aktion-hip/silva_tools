@@ -20,8 +20,7 @@ values = {
     }
 }
 
-
 def values_i18n(form, field_name):
-    form_id = form.aq_inner.id
+    form_id = form.aq_parent.aq_inner.id
     i18n_list = values.get(form_id, {}).get(field_name, [])
     return [(unicode(label), value) for label, value in i18n_list]

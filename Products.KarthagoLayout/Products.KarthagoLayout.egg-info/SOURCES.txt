@@ -25,7 +25,7 @@ Products/KarthagoLayout/skin.pyc
 Products/KarthagoLayout/version.txt
 Products/KarthagoLayout/layout_templates/footer.pt
 Products/KarthagoLayout/layout_templates/layout.pt
-Products/KarthagoLayout/layout_templates/portlet.pt
+Products/KarthagoLayout/layout_templates/portletview.pt
 Products/KarthagoLayout/static/KarthagoLogo.gif
 Products/KarthagoLayout/static/favicon.ico
 Products/KarthagoLayout/static/footer_zs_and.gif

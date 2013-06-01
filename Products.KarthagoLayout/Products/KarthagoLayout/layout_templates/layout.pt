@@ -1,9 +1,8 @@
-<div class="margins" id="bodymargins" style="width:auto;"
-     tal:define="resourcebase request/resourcebase/absolute_url;">
+<div class="margins" id="bodymargins" style="width:auto;">
 
     <div id="header">
       <div id="sitelogo">
-        <a tal:attributes="href request/resourcebase/absolute_url">
+        <a tal:attributes="href provider/site_url">
           <img tal:attributes="src provider/static/KarthagoLogo.gif;
                                alt provider/site_title;
                                title provider/site_title;" />
@@ -22,7 +21,7 @@
     <div id="navigationtree">
       <ul>
       <li>
-        <a tal:attributes="href request/resourcebase/absolute_url" 
+        <a tal:attributes="href provider/site_url" 
            class="subnav-off level0"><span tal:replace="provider/site_title">navigation title</span></a>
       </li>
       <tal:block tal:replace="structure provider:navigation" />
@@ -31,7 +30,7 @@
     
     <div id="content">
 		<div id="portlets">
-            <tal:block tal:replace="structure provider:portlet" />		
+            <tal:block tal:replace="structure provider:portletview" />		
 		</div>
       
       <div id="content_body" tal:content="structure view/content">

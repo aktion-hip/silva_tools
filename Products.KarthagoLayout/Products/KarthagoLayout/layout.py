@@ -1,13 +1,16 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2011 RelationWare, Benno Luthiger. All rights reserved.
+# Copyright (c) 2011-2013 RelationWare, Benno Luthiger. All rights reserved.
 # See also LICENSE.txt
 
+# Zope
+from five import grok
 from zope.cachedescriptors.property import CachedProperty
-from zope import component
 
+# Silva
 from silva.core.views import views as silvaviews
 from silva.core.layout.porto import porto
 from silva.core import conf as silvaconf
+from silva.core.interfaces.content import IContainer
 
 from Products.RwLayout import rw_layout
 
@@ -17,6 +20,21 @@ from Products.KarthagoLayout.skin import IKarthago
 portlets_id = "portlets"
 
 silvaconf.layer(IKarthago)
+
+class MainLayout(rw_layout.MainLayout):
+    pass
+
+class KarthagoInserts(silvaviews.Viewlet):
+    grok.viewletmanager(porto.HTMLHeadInsert)
+
+    def render(self):
+        return u'''    <link rel="shortcut icon" type="image/x-icon" href="%s" />''' %self.static['favicon.ico']()
+
+class Favicon(silvaviews.Viewlet):
+    grok.viewletmanager(porto.HTMLHeadInsert)
+    
+    def render(self):
+        return ''
 
 class Layout(rw_layout.Layout):
     pass
@@ -56,7 +74,10 @@ class Navigation(rw_layout.Navigation):
     def filter_service(self):
         return rw_layout.InfrastructureFilter(infrastructure)
 
-class Portlet(silvaviews.ContentProvider):
+
+class PortletView(silvaviews.ContentProvider):
+    grok.name("portletview")
+    
     @CachedProperty
     def get_portlets(self):
         view = self.context
@@ -69,9 +90,13 @@ class Portlet(silvaviews.ContentProvider):
         if not folder: return []
 
         portlets = []
-        for indent, portlet in folder.get_public_tree():
-            portlets.append(portlet)
+        for portlet in folder.get_ordered_publishables():
+            viewable = portlet.get_viewable()
+            if IContainer.providedBy(portlet):
+                viewable = portlet.get_default().get_viewable()
+            portlets.append(viewable)
         return portlets
+
 
 class Footer(silvaviews.ContentProvider):
     @CachedProperty

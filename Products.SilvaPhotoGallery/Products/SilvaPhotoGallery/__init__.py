@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright (c) 2011 RelationWare. All rights reserved.
+# Copyright (c) 2011-2013 RelationWare. All rights reserved.
 # See also LICENSE.txt
 
 import AccessControl
@@ -15,7 +15,8 @@ from Products.SilvaPhotoGallery.configuration import cs_container, dft_id, dft_t
 _extensionName = "SilvaPhotoGallery"
 silvaconf.extensionName(_extensionName)
 silvaconf.extensionTitle('Silva Photo Gallery')
-silvaconf.extensionDepends(["SilvaExternalSources"])   
+silvaconf.extensionDepends(["SilvaExternalSources"])
+
 
 class IExtension(Interface):
     '''

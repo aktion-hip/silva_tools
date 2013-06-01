@@ -124,7 +124,7 @@ class PhotoGallery(CodeSource):
             pscript.write(text)
             
     security.declareProtected(SilvaPermissions.ViewManagementScreens, 'manage_editPhotoGallery')
-    def manage_editPhotoGallery(self, title, data_encoding, description=None, cacheable=None, previewable=None):
+    def manage_editPhotoGallery(self, title, data_encoding, description=None, cacheable=None, previewable=None, usable=None):
         '''
         Saves the edited values
         
@@ -132,19 +132,25 @@ class PhotoGallery(CodeSource):
         @param data_encoding:
         @param description:
         @param cacheable:
+        @param previewable:
+        @param usable:
         @return: html of the changed form and feedback messages.
         '''
         #beautificaton of return value
         retval = self.manage_editCodeSource(title, 'gallery_helper_scripts.js', data_encoding, description=description, 
-                                            cacheable=cacheable, previewable=previewable)
+                                            cacheable=cacheable, previewable=previewable, usable=usable)
         return retval.replace("<b>Warning</b>: no script id specified!", "")
             
     security.declareProtected(SilvaPermissions.AccessContentsInformation,
                                 'to_html')
-    def to_html(self, content, request, **kw):
+    def to_html(self, content, request, **parameters):
         """render the photo gallery"""
-        renderer = Renderer(kw.get('language', dft_language))
-        result = renderer.render(self, self._getPhotos(content.get_content()), **kw)
+        photos = self._getPhotos(content.get_content())
+        if not photos:
+            return u'<p>no photos found!</p>'
+        
+        renderer = Renderer(parameters.get('language', dft_language))
+        result = renderer.render(self, photos, **parameters)
         if type(result) is unicode:
             return result
         return unicode(result, self.get_data_encoding(), 'replace')

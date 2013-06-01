@@ -18,6 +18,7 @@ Products/RwLayout/absoluteurl.pyc
 Products/RwLayout/configuration.py
 Products/RwLayout/configuration.pyc
 Products/RwLayout/configure.zcml
+Products/RwLayout/content.pyc
 Products/RwLayout/helpers.py
 Products/RwLayout/helpers.pyc
 Products/RwLayout/install.pyc
