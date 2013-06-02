@@ -4,7 +4,7 @@
 <div class="portlet-border">
     <div class="portlet">
         <p class="lineheight1"></p>
-        <div tal:replace="structure python:portlet.body">view document</div>
+        <div tal:replace="structure portlet/@@content.html | default">view document</div>
     </div>
 </div>
 

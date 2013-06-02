@@ -84,7 +84,7 @@ class Renderer(object):
         show_captions = int(kw.get('caption'))
         slide_show_position = int(kw.get('slide_show_settings'))
         help_info_position = int(kw.get('help_info'))
-        portrait = [x for x in photos if x.getOrientation()=='portrait' or x.getOrientation()=='square']
+        portrait = [x for x in photos if x.get_orientation()=='portrait' or x.get_orientation()=='square']
         
         tools_before = self._createTools(context, 1, slide_show_position, help_info_position)
         tools_after = self._createTools(context, 2, slide_show_position, help_info_position)

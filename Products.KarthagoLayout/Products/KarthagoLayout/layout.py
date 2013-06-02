@@ -91,10 +91,7 @@ class PortletView(silvaviews.ContentProvider):
 
         portlets = []
         for portlet in folder.get_ordered_publishables():
-            viewable = portlet.get_viewable()
-            if IContainer.providedBy(portlet):
-                viewable = portlet.get_default().get_viewable()
-            portlets.append(viewable)
+            portlets.append(portlet)
         return portlets
 
 

@@ -408,6 +408,10 @@ div.portlet {
     margin-left:10px;
 }
 
+#portlets div.portlet h1 {
+    display: none;
+}
+
 #portlets div.portlet h2.heading {
     font-size:110%;
     color: #FE1101;
