@@ -5,7 +5,6 @@
 from zope.interface import Interface
 from silva.core.conf.installer import DefaultInstaller
 from silva.core import conf as silvaconf
-#from Products.Silva.install import add_fss_directory_view
 from Products.Silva import roleinfo
 
 _extensionName = "StaticSite"
@@ -21,24 +20,9 @@ class IExtension(Interface):
 
 class StaticSiteInstaller(DefaultInstaller):
     def install_custom(self, root):
-        #TODO
-        #add_fss_directory_view(
-        #    root.service_views, _extensionName, __file__, 'views')
-        # also register views
-        #registerViews(root.service_view_registry)
-        # metadata registration
         configureSecurity(root)
         configureAddables(root)
 
-    def uninstall_custom(self, root):
-        #unregisterViews(root.service_view_registry)
-        pass
-    
-def registerViews(reg):
-    reg.register('edit', _meta_type, ['edit', 'StaticSite'])    
-
-def unregisterViews(reg):
-    reg.unregister('edit', _meta_type)
 
 def configureSecurity(root):
     """Update the security tab settings to the Silva defaults.

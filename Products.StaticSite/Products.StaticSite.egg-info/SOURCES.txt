@@ -12,3 +12,5 @@ Products.StaticSite.egg-info/top_level.txt
 Products/StaticSite/StaticSite.py
 Products/StaticSite/__init__.py
 Products/StaticSite/configuration.py
+Products/StaticSite/interfaces.py
+Products/StaticSite/smi.py
